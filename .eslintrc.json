@@ -1,0 +1,21 @@
+{
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "globals": {
+      "graphql": true
+    },
+    "rules": {
+      "react/prop-types": "off",
+      "jsx-quotes": ["error", "prefer-double"],
+      "comma-dangle": ["error", "always-multiline"],
+      "space-before-function-paren": ["error", "never"],
+      "quotes": ["error", "double"],
+      "camelcase": "off",
+      "react/jsx-fragments": "off",
+      "react/jsx-pascal-case": "off"
+    },
+    "extends": ["standard", "standard-react"],
+    "parser": "babel-eslint"
+  }
