@@ -92,7 +92,7 @@ const HomepageHero = () => {
     <section>
       <HeroWrapper background={HeroBackground}>
         <HeroContentWrapper>
-          <img src={HeroImage} />
+          <img src={HeroImage} alt="Dummy Image" />
 
           <HeaderContainer background={HeroDecor}>
             <Header>

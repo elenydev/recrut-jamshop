@@ -136,7 +136,6 @@ const ProductsList = () => {
 
   return (
     <Wrapper>
-
       <Carousel
         breakPoints={breakPoints}
         pagination={false}
@@ -149,7 +148,6 @@ const ProductsList = () => {
           } = product
           return (
             <CardWrapper key={index}>
-
               <Link to={`/${frontmatter.slug}`}>
                 <Card>
                   <CardImageBox>
@@ -168,7 +166,6 @@ const ProductsList = () => {
             </CardWrapper>
           )
         })}
-
       </Carousel>
     </Wrapper>
   )

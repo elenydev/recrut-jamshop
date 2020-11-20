@@ -5,20 +5,39 @@ module.exports = {
     author: "@bejamasio",
   },
   plugins: [
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: ["gatsby-remark-static-images"],
+      },
+    },
+
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-catch-links",
+
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/gatsby-config.js`,
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
         path: `${__dirname}/src/assets`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         name: "products",
         path: `${__dirname}/src/data/products`,
       },
     },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-remark",
+
     {
       resolve: "gatsby-plugin-manifest",
       options: {
