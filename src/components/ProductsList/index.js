@@ -47,6 +47,11 @@ const Card = styled.div`
   flex-direction: column;
   padding: 15px;
   max-width: 270px;
+  transition: 0.3s all ease-in;
+
+  &:hover {
+    background: #4e2b67;
+  }
 `
 
 const CardImageBox = styled.div`
