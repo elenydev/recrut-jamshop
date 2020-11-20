@@ -12,10 +12,13 @@ module.exports = {
       options: {
         name: "images",
         path: `${__dirname}/src/assets`,
+        name: "products",
+        path: `${__dirname}/src/data/products`,
       },
     },
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    "gatsby-transformer-remark",
     {
       resolve: "gatsby-plugin-manifest",
       options: {

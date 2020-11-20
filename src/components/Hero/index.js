@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import HeroBackground from "../../assets/elements/hero_background.svg"
 import HeroImage from "../../assets/elements/monitor.svg"
+import HeroDecor from "../../assets/elements/hero_decor.svg"
 
 const HeroWrapper = styled.div`
   display: flex;
@@ -10,10 +11,11 @@ const HeroWrapper = styled.div`
   justify-content: center;
   width: 100%;
   background: ${({ background }) => `url(${background}) no-repeat`};
-  background-position: right top;
+  background-position: right top -50px;
 
   @media (min-width: 960px) {
-    min-height: 55vh;
+    min-height: 45vh;
+    background-position: right top -100px;
   }
 `
 
@@ -22,7 +24,7 @@ const HeroContentWrapper = styled.div`
   flex-direction: column;
   width: 85%;
   padding-top: 10%;
-  
+
   @media (min-width: 960px) {
     flex-direction: row;
     justify-content: space-between;
@@ -37,6 +39,7 @@ const HeroContentWrapper = styled.div`
 
 const HeaderContainer = styled.div`
   display: flex;
+  background: ${({ background }) => `url(${background}) no-repeat right top`};
   flex-direction: column;
   @media (min-width: 960px) {
     width: 40%;
@@ -58,7 +61,8 @@ const Header = styled.h1`
     font-size: 2.5em;
   }
 `
-const Button = styled.button`
+
+export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,6 +72,7 @@ const Button = styled.button`
   font-weight: 700;
   border-radius: 4px;
   cursor: pointer;
+  text-transform: uppercase;
   transition: 0.4s all ease-in;
   padding: 5px 10px;
 
@@ -89,7 +94,7 @@ const HomepageHero = () => {
         <HeroContentWrapper>
           <img src={HeroImage} />
 
-          <HeaderContainer>
+          <HeaderContainer background={HeroDecor}>
             <Header>
               Don't waste time
               <br />
@@ -97,7 +102,6 @@ const HomepageHero = () => {
             </Header>
             <Button>GO EXPLORE</Button>
           </HeaderContainer>
-
         </HeroContentWrapper>
       </HeroWrapper>
     </section>

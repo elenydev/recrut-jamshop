@@ -1,14 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  // ButtonBack,
-  // ButtonNext,
-} from "pure-react-carousel"
-import "pure-react-carousel/dist/react-carousel.es.css"
+import { useStaticQuery, graphql } from "gatsby"
+import ProductList from "../ProductsList/index.js"
 
 const ProductsWrapper = styled.div`
   display: flex;
@@ -16,17 +9,55 @@ const ProductsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 35px;
+  width: 100%;
+
+  .BrainhubCarousel__arrows {
+    background: transparent;
+    border-radius: 50%;
+    border: 3px solid white;
+    padding: 15px;
+  }
+
+  .BrainhubCarousel__container {
+    overflow-x: hidden;
+    padding: 20px;
+  }
+  .BrainhubCarousel__trackContainer {
+    padding-bottom: 30px;
+    overflow-x: hidden;
+  }
 
   @media (min-width: 960px) {
     margin-top: 0;
+    justify-content: flex-start;
+
+    .BrainhubCarousel__arrows {
+      padding: 21px;
+    }
   }
 `
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   padding: 2%;
+  align-items: center;
+
+  @media (min-width: 960px) {
+    align-items: flex-start;
+  }
+`
+
+const HeadingWrapper = styled.div`
+  width: 80%;
+  padding-bottom: 20px;
+
+  @media (min-width: 960px) {
+    width: 50%;
+    padding: 0% 10%;
+    padding-bottom: 35px;
+  }
 `
 const Heading = styled.h2`
   color: #eeeeee;
@@ -51,31 +82,33 @@ const SubHeading = styled.p`
 `
 
 const Products = () => {
+  const data = useStaticQuery(graphql`
+    {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/(index)/" } }) {
+        edges {
+          node {
+            frontmatter {
+              title
+              lead
+            }
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <ProductsWrapper>
       <ContentWrapper>
-        <Heading>Explore community choices</Heading>
-        <SubHeading>
-          Updated daily based on most popular choices
-          <br />
-          among dev community
-        </SubHeading>
-        <>
-          <CarouselProvider
-            naturalSlideWidth={100}
-            naturalSlideHeight={125}
-            totalSlides={5}
-            visibleSlides={5}
-          >
-            <Slider>
-              <Slide index={1}>es</Slide>
-              <Slide index={1}>es</Slide>
-              <Slide index={1}>es</Slide>
-              <Slide index={1}>es</Slide>
-              <Slide index={1}>es</Slide>
-            </Slider>
-          </CarouselProvider>
-        </>
+        <HeadingWrapper>
+          <Heading>
+            {data.allMarkdownRemark.edges[0].node.frontmatter.title}
+          </Heading>
+          <SubHeading>
+            {data.allMarkdownRemark.edges[0].node.frontmatter.lead}
+          </SubHeading>
+        </HeadingWrapper>
+        <ProductList />
       </ContentWrapper>
     </ProductsWrapper>
   )

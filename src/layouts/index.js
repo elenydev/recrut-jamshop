@@ -1,10 +1,11 @@
 import React from "react"
 import { createGlobalStyle } from "styled-components"
-
 import Header from "../components/Header"
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
   
   body {
     margin: 0;
